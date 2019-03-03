@@ -84,11 +84,15 @@ func readFile(fileName string) []byte {
 	return content
 }
 
-func add(item, fileName string) {
-	content := readFile(fileName)
-	var users interface{}
-	json.Unmarshal(content, &users)
+func add(item, fileName string) []byte {
+	var user User
+	json.Unmarshal([]byte(item), &user)
 
+	if string(findById(user.Id, fileName)) == "" {
+
+	}
+
+	return []byte(fmt.Sprintf("Item with id %s already exists", user.Id))
 }
 
 func findById(id, fileName string) []byte {
@@ -122,7 +126,7 @@ func Perform(args Arguments, writer io.Writer) error {
 	var content []byte
 	switch args[operationArg] {
 	case addOps:
-		add(args[itemArg], args[fileNameArg])
+		content = add(args[itemArg], args[fileNameArg])
 	case findByIdOps:
 		content = findById(args[idArg], args[fileNameArg])
 	case removeOps:
