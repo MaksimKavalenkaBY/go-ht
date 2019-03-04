@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+)
 
 const (
 	idArg        = "id"
@@ -45,5 +48,15 @@ func checkArguments(args Arguments) error {
 }
 
 func parseArgs() Arguments {
-	return nil
+	id := *flag.String("id", "", "a string")
+	operation := *flag.String("operation", "", "a string")
+	item := *flag.String("item", "", "a string")
+	fileName := *flag.String("fileName", "", "a string")
+
+	return Arguments{
+		id:        id,
+		operation: operation,
+		item:      item,
+		fileName:  fileName,
+	}
 }
