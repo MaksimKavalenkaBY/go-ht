@@ -20,7 +20,7 @@ func Perform(args Arguments, writer io.Writer) error {
 	case findByIdOps:
 		data, fileErr = findById(args[idArg], args[fileNameArg])
 	case removeOps:
-		remove(args[idArg], args[fileNameArg])
+		data, fileErr = remove(args[idArg], args[fileNameArg])
 	case listOps:
 		data, fileErr = list(args[fileNameArg])
 	}
