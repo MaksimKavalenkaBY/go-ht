@@ -2,10 +2,6 @@ package main
 
 import "fmt"
 
-type MyError struct {
-	msg string
-}
-
 const (
 	idArg        = "id"
 	itemArg      = "item"
@@ -23,10 +19,6 @@ var operationArguments = map[string][]string{
 	findByIdOps: {idArg, fileNameArg},
 	removeOps:   {idArg, fileNameArg},
 	listOps:     {fileNameArg},
-}
-
-func (error *MyError) Error() string {
-	return error.msg
 }
 
 func checkArguments(args Arguments) error {

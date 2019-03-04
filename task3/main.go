@@ -12,22 +12,23 @@ func Perform(args Arguments, writer io.Writer) error {
 		return err
 	}
 
-	var content []byte
+	var data []byte
+	var fileErr error
 	switch args[operationArg] {
 	case addOps:
-		content = add(args[itemArg], args[fileNameArg])
+		data, fileErr = add(args[itemArg], args[fileNameArg])
 	case findByIdOps:
-		content = findById(args[idArg], args[fileNameArg])
+		data, fileErr = findById(args[idArg], args[fileNameArg])
 	case removeOps:
 		remove(args[idArg], args[fileNameArg])
 	case listOps:
-		content = list(args[fileNameArg])
+		data, fileErr = list(args[fileNameArg])
 	}
 
-	fmt.Println(string(content))
-	writer.Write(content)
+	fmt.Println(string(data))
+	writer.Write(data)
 
-	return nil
+	return fileErr
 }
 
 func main() {
