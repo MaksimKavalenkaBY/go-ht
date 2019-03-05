@@ -48,15 +48,16 @@ func checkArguments(args Arguments) error {
 }
 
 func parseArgs() Arguments {
-	id := *flag.String("id", "", "a string")
-	operation := *flag.String("operation", "", "a string")
-	item := *flag.String("item", "", "a string")
-	fileName := *flag.String("fileName", "", "a string")
+	id := flag.String("id", "", "a string")
+	operation := flag.String("operation", "", "a string")
+	item := flag.String("item", "", "a string")
+	fileName := flag.String("fileName", "", "a string")
+	flag.Parse()
 
 	return Arguments{
-		id:        id,
-		operation: operation,
-		item:      item,
-		fileName:  fileName,
+		"id":        *id,
+		"operation": *operation,
+		"item":      *item,
+		"fileName":  *fileName,
 	}
 }
