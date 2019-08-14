@@ -1,0 +1,8 @@
+{
+    "resources": [
+        "http://www.golang.org",
+        "http://www.example.com"
+    ],
+    "times": 5,
+    "timeout": 350
+}
