@@ -14,7 +14,7 @@ func TestMapFn(t *testing.T) {
 
 	result := MapTo(array, cb)
 	if !reflect.DeepEqual(result, expected) {
-		t.Errorf("Expected result to be equal %d, but got %d", expected, result)
+		t.Errorf("Expected result to be equal %v, but got %v", expected, result)
 	}
 }
 
@@ -30,7 +30,7 @@ func TestConvertion(t *testing.T) {
 	for _, table := range testsTable {
 		result := Convert(table.array)
 		if !reflect.DeepEqual(result, table.expected) {
-			t.Errorf("Expected result to be equal %d, but got %d", table.expected, result)
+			t.Errorf("Expected result to be equal %v, but got %v", table.expected, result)
 		}
 	}
 }
